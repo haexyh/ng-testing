@@ -14,6 +14,7 @@ describe('CalculationService', () => {
     expect(service).toBeTruthy();
   });
 
+  // todo make it pending
   it('should add two numbers', () => {
     fail()
   });
@@ -23,6 +24,7 @@ describe('CalculationService', () => {
     expect(result).toBe(1);
   });
 
+  // todo fix it
   it('should be infinity ', () => {
     const result = service.divide(1,2)
     expect(result)
