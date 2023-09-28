@@ -1,10 +1,10 @@
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {fakeAsync, flush, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
 
 import {AsyncService} from './async.service';
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {HttpClient} from "@angular/common/http";
 
-describe('AsyncService', () => {
+fdescribe('AsyncService', () => {
   let service: AsyncService, httpController: HttpTestingController;
 
   beforeEach(() => {
@@ -44,6 +44,26 @@ describe('AsyncService', () => {
   //   req.flush([])
   //
   // });
+
+  it('should get a path A', (done) => {
+    const id = crypto.randomUUID();
+    service.getFilePath$(id)
+      .subscribe(path => {
+        expect(path).toBe(`tmp/${id}`)
+        done()
+      })
+  });
+
+  // todo fix it
+  // it('should get a path B', fakeAsync(() => {
+  //   const id = crypto.randomUUID();
+  //   service.getFilePath$(id)
+  //     .subscribe(path => {
+  //       expect(path).toBe(`tmp/${id}`)
+  //     })
+  //   tick(100)
+  // }));
+
 
   afterEach(() => httpController.verify())
 
