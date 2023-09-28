@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -15,6 +15,12 @@ export class AsyncService {
   getPokemon$(id: number): Observable<Pokemon>
   {
     return this.httpClient.get<Pokemon>(`https://pokeapi.co/api/v2/berry/${id}`)
+  }
+
+  getPokemons$(sort: 'asc'| 'desc'): Observable<Pokemon[]>
+  {
+    const params = new HttpParams().set('sort', sort);
+    return this.httpClient.get<Pokemon[]>(`https://pokeapi.co/api/v2/berry`, {params})
   }
 }
 type Pokemon = {id: number, name: string}

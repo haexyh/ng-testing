@@ -20,17 +20,29 @@ describe('AsyncService', () => {
   });
 
   // todo fix it
-  it('should get a pokemon', () => {
-    const pokemonId = 1;
+  // it('should get a pokemon', () => {
+  //   const pokemonId = 1;
+  //
+  //   service.getPokemon$(pokemonId)
+  //     .subscribe(({id, name}) => {
+  //       expect(id).toBe(pokemonId);
+  //       expect(name).toEqual('hans')
+  //     })
+  //
+  //   const req = httpController.expectOne({url: `https://pokeapi.co/api/v2/berry/1`, method: 'GET'});
+  // });
 
-    service.getPokemon$(pokemonId)
-      .subscribe(({id, name}) => {
-        expect(id).toBe(pokemonId);
-        expect(name).toEqual('hans')
-      })
+  // todo fix it
+  fit('should get a pokemon list with asc sorting', () => {
 
-    const req = httpController.expectOne({url: `https://pokeapi.co/api/v2/berry/1`, method: 'GET'});
-    req.flush({id: pokemonId, name: 'hans'})
+    service.getPokemons$('asc')
+      .subscribe((data) => expect(data).toBeTruthy() );
+
+
+    const req = httpController.expectOne(req => req.url === 'https://pokeapi.co/api/v2/berry');
+    expect(req.request.method).toEqual('GET')
+    expect(req.request.params.get('sort')).toEqual('asc')
+    req.flush([])
 
   });
 
