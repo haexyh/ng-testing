@@ -29,8 +29,8 @@ describe('AsyncService', () => {
         expect(name).toEqual('hans')
       })
 
-    httpController.expectOne({url: `https://pokeapi.co/api/v2/berry/1`, method: 'GET'})
-      .flush({id: pokemonId, name: 'hans'})
+    const req = httpController.expectOne({url: `https://pokeapi.co/api/v2/berry/1`, method: 'GET'});
+    req.flush({id: pokemonId, name: 'hans'})
 
   });
 
