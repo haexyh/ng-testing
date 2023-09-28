@@ -4,7 +4,7 @@ import {AsyncService} from './async.service';
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {HttpClient} from "@angular/common/http";
 
-fdescribe('AsyncService', () => {
+describe('AsyncService', () => {
   let service: AsyncService, httpController: HttpTestingController;
 
   beforeEach(() => {
@@ -61,7 +61,6 @@ fdescribe('AsyncService', () => {
   //     .subscribe(path => {
   //       expect(path).toBe(`tmp/${id}`)
   //     })
-  //   tick(100)
   // }));
 
 
