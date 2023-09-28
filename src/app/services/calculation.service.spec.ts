@@ -1,6 +1,6 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {CalculationService} from './calculation.service';
+import { CalculationService } from './calculation.service';
 
 describe('CalculationService', () => {
   let service: CalculationService;
@@ -20,7 +20,7 @@ describe('CalculationService', () => {
   // });
 
   it('should be correct', () => {
-    const result = service.divide(1, 1)
+    const result = service.divide(1, 1);
     expect(result).toBe(1);
   });
 
@@ -31,5 +31,4 @@ describe('CalculationService', () => {
   //     .withContext('Second number isn`t 0')
   //     .toBe(Infinity);
   // });
-
 });

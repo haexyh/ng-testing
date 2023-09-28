@@ -1,8 +1,8 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {ExportService} from './export.service';
-import {AsyncService} from "./async.service";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { ExportService } from './export.service';
+import { AsyncService } from './async.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import createSpyObj = jasmine.createSpyObj;
 
 describe('ExportService', () => {
@@ -11,16 +11,20 @@ describe('ExportService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{provide: AsyncService, use: createSpyObj('AsyncService', ['isConnected'])}]
+      providers: [
+        {
+          provide: AsyncService,
+          use: createSpyObj('AsyncService', ['isConnected']),
+        },
+      ],
     });
     service = TestBed.inject(ExportService);
-    asyncService = TestBed.inject(AsyncService)
+    asyncService = TestBed.inject(AsyncService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
     expect(asyncService).toBeTruthy();
-
   });
 
   // it('can`t export', () => {
@@ -30,9 +34,8 @@ describe('ExportService', () => {
   // });
 
   it('can  export', () => {
-    spyOn(asyncService, 'isConnected').and.returnValue(true)
+    spyOn(asyncService, 'isConnected').and.returnValue(true);
     const result = service.canExport();
     expect(result).toBe(true);
   });
-
 });

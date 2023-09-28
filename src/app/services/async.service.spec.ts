@@ -1,7 +1,15 @@
-import {fakeAsync, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
+import {
+  fakeAsync,
+  flushMicrotasks,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 
-import {AsyncService} from './async.service';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { AsyncService } from './async.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 describe('AsyncService', () => {
   let service: AsyncService, httpController: HttpTestingController;
@@ -46,11 +54,10 @@ describe('AsyncService', () => {
 
   it('should get a path A', (done) => {
     const id = crypto.randomUUID();
-    service.getFilePath$(id)
-      .subscribe(path => {
-        expect(path).toBe(`tmp/${id}`)
-        done()
-      })
+    service.getFilePath$(id).subscribe((path) => {
+      expect(path).toBe(`tmp/${id}`);
+      done();
+    });
   });
 
   // todo fix it
@@ -64,13 +71,13 @@ describe('AsyncService', () => {
 
   // todo ask
   it('Micro and Macro', () => {
-    setTimeout(() => console.log('setTimeout 1'))
-    setTimeout(() => console.log('setTimeout 2'))
-    Promise.resolve().then(() => console.log('Promise A'))
+    setTimeout(() => console.log('setTimeout 1'));
+    setTimeout(() => console.log('setTimeout 2'));
+    Promise.resolve()
+      .then(() => console.log('Promise A'))
       .then(() => console.log('Promise B'))
-      .then(() => console.log('Promise C'))
-    setTimeout(() => console.log('setTimeout 3'))
-
+      .then(() => console.log('Promise C'));
+    setTimeout(() => console.log('setTimeout 3'));
   });
 
   // todo final
@@ -80,21 +87,19 @@ describe('AsyncService', () => {
     Promise.resolve()
       .then(() => Promise.resolve())
       .then(() => {
-        counter += 10
+        counter += 10;
         // Add macroTaks
-        setTimeout(() => counter++, 1_000)
-      })
+        setTimeout(() => counter++, 1_000);
+      });
     // Both queue aren't processed
     expect(counter).toBe(0);
     // Process all promises
-    flushMicrotasks()
+    flushMicrotasks();
     expect(counter).toBe(10);
     // Simulate time
-    tick(1_000)
+    tick(1_000);
     expect(counter).toBe(11);
   }));
 
-
-  afterEach(() => httpController.verify())
-
+  afterEach(() => httpController.verify());
 });

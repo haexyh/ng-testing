@@ -1,10 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CalculationService {
-
   add(a: number, b: number) {
     return a + b;
   }
@@ -12,5 +11,4 @@ export class CalculationService {
   divide(a: number, b: number) {
     return a / b;
   }
-
 }
