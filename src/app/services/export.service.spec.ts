@@ -2,8 +2,8 @@ import {TestBed} from '@angular/core/testing';
 
 import {ExportService} from './export.service';
 import {AsyncService} from "./async.service";
-import createSpyObj = jasmine.createSpyObj;
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import createSpyObj = jasmine.createSpyObj;
 
 describe('ExportService', () => {
   let service: ExportService, asyncService: any;

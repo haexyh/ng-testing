@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AsyncService} from "./async.service";
 
 @Injectable({
@@ -8,8 +8,8 @@ export class ExportService {
 
   constructor(private readonly asyncService: AsyncService) {
   }
-  canExport()
-  {
+
+  canExport() {
     return this.asyncService.isConnected();
   }
 }
